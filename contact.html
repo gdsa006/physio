@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Sage Meadows Allied Health Physiotherapy</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/appointment.css">
+    <style>
+        #map {
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0e4ed;
+        }
+
+        .map-section {
+            background: var(--light-color);
+        }
+
+        .contact-hero {
+            background: linear-gradient(135deg, #fdf4f8 0%, #fce8f3 50%, #fef5f9 100%);
+            padding: 8rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(209, 0, 114, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .contact-hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .contact-hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .contact-hero {
+                padding: 6rem 0 3rem;
+            }
+            .contact-hero-title {
+                font-size: 2.75rem;
+            }
+            .contact-hero-desc {
+                font-size: 1.125rem;
+            }
+            #map {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .contact-hero {
+                padding: 5rem 0 2rem;
+            }
+            .contact-hero-title {
+                font-size: 2.25rem;
+            }
+            .contact-hero-desc {
+                font-size: 1rem;
+            }
+            #map {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="Sage Meadows Allied Health Physiotherapy" class="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="team.html">Our Team</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="services.html" role="button" data-bs-toggle="dropdown">
+                            Our Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="physiotherapy.html">Physiotherapy</a></li>
+                            <li><a class="dropdown-item" href="massage.html">Massage Therapy</a></li>
+                            <li><a class="dropdown-item" href="chiropractic.html">Chiropractic</a></li>
+                            <li><a class="dropdown-item" href="acupuncture.html">Acupuncture</a></li>
+                            <li><a class="dropdown-item" href="osteopathy.html">Osteopathy</a></li>
+                            <li><a class="dropdown-item" href="psychology.html">Psychology</a></li>
+                            <li><a class="dropdown-item" href="dietitian.html">Dietitian</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center" data-aos="fade-up">
+                    <h1 class="contact-hero-title">Get In <span class="text-gradient">Touch</span></h1>
+                    <p class="contact-hero-desc">We're here to help you on your journey to better health. Reach out to us today to schedule your appointment or ask any questions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section py-5" id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h2 class="section-title">Contact Information</h2>
+                    <p class="mb-4">Ready to start your journey to better health? Contact us today to schedule your appointment.</p>
+
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h5>Phone</h5>
+                                <p>403 906 1996</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>info@carringtonphysio.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h5>Address</h5>
+                                <p>2971 136 Ave NW #240C<br>Calgary, AB T3P 1N7</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h5>Opening Hours</h5>
+                                <p>Monday - Friday: 8:00 AM - 6:00 PM<br>
+                                Saturday: 9:00 AM - 2:00 PM<br>
+                                Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="contact-form-wrapper">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        <form class="contact-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="tel" class="form-control" placeholder="Your Phone">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Find Us</h2>
+                <p class="section-subtitle">Visit us at our convenient Calgary NW location</p>
+            </div>
+            <div class="row">
+                <div class="col-12" data-aos="fade-up" data-aos-delay="100">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-4 text-center text-md-start">
+                        <p class="mb-0">&copy; 2025 Sage Meadows Allied Health Clinic | Restoring Strength. Renewing Motion.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="social-links justify-content-center">
+                            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center text-md-end">
+                        <ul class="footer-legal">
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <button class="floating-appointment-btn" id="appointmentBtn" aria-label="Schedule Appointment">
+        <span class="btn-icon">
+            <i class="fas fa-calendar-check"></i>
+        </span>
+        <span class="btn-text">Book Now</span>
+    </button>
+
+
+    <div class="appointment-modal" id="appointmentModal">
+        <div class="appointment-modal-overlay"></div>
+        <div class="appointment-modal-content">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header-custom">
+                <div class="modal-icon-wrapper">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2>Schedule Your Appointment</h2>
+                <p>Choose your preferred date and time for consultation</p>
+            </div>
+            <form class="appointment-form" id="appointmentForm">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" class="form-control" placeholder="John Doe" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Phone Number *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" class="form-control" placeholder="+1 403 906 1996" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email Address *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Service Type *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-briefcase-medical"></i>
+                            <select class="form-control" required>
+                                <option value="">Select Service</option>
+                                <option value="sports">Sports Injuries</option>
+                                <option value="back">Back Pain</option>
+                                <option value="neck">Neck Pain</option>
+                                <option value="joint">Joint Pain</option>
+                                <option value="surgery">Post-Surgery Rehab</option>
+                                <option value="massage">Massage Therapy</option>
+                                <option value="exercise">Exercise Therapy</option>
+                                <option value="womens">Women's Health</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Preferred Date *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-calendar"></i>
+                            <input type="date" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Preferred Time *</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-clock"></i>
+                            <select class="form-control" required>
+                                <option value="">Select Time</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Additional Notes</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea class="form-control" rows="3" placeholder="Tell us about your condition or any specific concerns..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Confirm Appointment
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Map
+        var map = L.map('map').setView([51.1447, -114.0719], 13);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Create custom pink marker icon using CSS
+        var customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: `
+                <div style="position: relative;">
+                    <div style="
+                        width: 40px;
+                        height: 40px;
+                        background: linear-gradient(135deg, #d10072, #e6cccd);
+                        border-radius: 50% 50% 50% 0;
+                        transform: rotate(-45deg);
+                        box-shadow: 0 10px 30px rgba(209, 0, 114, 0.4);
+                        border: 3px solid white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    ">
+                        <i class="fas fa-clinic-medical" style="
+                            color: white;
+                            font-size: 16px;
+                            transform: rotate(45deg);
+                            margin-top: -5px;
+                            margin-left: -2px;
+                        "></i>
+                    </div>
+                </div>
+            `,
+            iconSize: [40, 40],
+            iconAnchor: [20, 40],
+            popupAnchor: [0, -40]
+        });
+
+        // Add marker to map
+        var marker = L.marker([51.1447, -114.0719], { icon: customIcon }).addTo(map);
+
+        // Add popup to marker
+        marker.bindPopup(`
+            <div style="font-family: 'Inter', sans-serif; padding: 10px;">
+                <h5 style="color: #d10072; font-weight: 700; margin-bottom: 10px; font-size: 16px;">
+                    <i class="fas fa-clinic-medical" style="margin-right: 8px;"></i>
+                    Sage Meadows Allied Health
+                </h5>
+                <p style="margin: 5px 0; color: #3d2733; font-size: 14px;">
+                    <i class="fas fa-map-marker-alt" style="color: #d10072; margin-right: 5px; width: 15px;"></i>
+                    2971 136 Ave NW #240C<br>
+                    <span style="margin-left: 20px;">Calgary, AB T3P 1N7</span>
+                </p>
+                <p style="margin: 5px 0; color: #3d2733; font-size: 14px;">
+                    <i class="fas fa-phone" style="color: #d10072; margin-right: 5px; width: 15px;"></i>
+                    403 906 1996
+                </p>
+                <a href="#contact" style="
+                    display: inline-block;
+                    margin-top: 10px;
+                    padding: 8px 16px;
+                    background: linear-gradient(135deg, #d10072, #e6cccd);
+                    color: white;
+                    text-decoration: none;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    font-size: 13px;
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(209, 0, 114, 0.3)';"
+                   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    <i class="fas fa-calendar-check" style="margin-right: 5px;"></i>
+                    Book Appointment
+                </a>
+            </div>
+        `).openPopup();
+    </script>
+</body>
+</html>

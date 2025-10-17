@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 65" width="360" height="65">
+  <!-- Decorative shape accent -->
+  <circle cx="4" cy="32" r="4" fill="url(#gradient)"/>
+
+  <!-- First Line: Sage Meadows Allied -->
+  <text x="14" y="25" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="22" font-weight="700" text-anchor="start" letter-spacing="-0.3">
+    <tspan fill="#2d1420">Sage Meadows Allied</tspan>
+  </text>
+
+  <!-- Second Line: Health Physiotherapy -->
+  <text x="14" y="50" font-family="'Plus Jakarta Sans', 'Inter', sans-serif" font-size="24" font-weight="800" text-anchor="start" letter-spacing="-0.2">
+    <tspan fill="#d10072">Health </tspan>
+    <tspan fill="#d10072" font-weight="600">Physiotherapy</tspan>
+  </text>
+
+  <!-- Decorative underline accent -->
+  <path d="M 14 56 Q 80 58, 160 56" stroke="url(#gradient)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d10072;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e6cccd;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#d10072;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+</svg>

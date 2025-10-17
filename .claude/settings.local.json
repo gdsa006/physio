@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(do sed -i 's/(555) 123-4567/403 906 1996/g' \"$file\")",
+      "Bash(do sed -i 's/123 Health Street/2971 136 Ave NW #240C/g' \"$file\")",
+      "Bash(do sed -i 's/Carrington, State 12345/Calgary, AB T3P 1N7/g; s/Carrington, Calgary/Calgary, AB T3P 1N7/g' \"$file\")",
+      "Bash(for file in about.html team.html blog.html contact.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
+      "Bash(do sed -i 's|<span class=\"\"brand-text\"\">Carrington <strong>Physio</strong></span>|<img src=\"\"images/logo.png\"\" alt=\"\"Sage Meadows Allied Health Physiotherapy\"\" class=\"\"logo-img\"\">|g' \"$file\")",
+      "Bash(do sed -i 's|images/logo\\.svg|images/logo.png|g' \"$file\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
