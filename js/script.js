@@ -600,7 +600,7 @@ document.head.appendChild(backToTopStyle);
 function initAppointmentModal() {
     const appointmentBtn = document.getElementById('appointmentBtn');
     const ctaBookAppointment = document.getElementById('ctaBookAppointment');
-    const appointmentModal = document.getElementById('appointmentModal');
+    const appointmentModal = document.getElementById('appointmentModal1');
     const closeModalBtn = document.getElementById('closeModal');
     const cancelBtn = document.getElementById('cancelBtn');
     const appointmentForm = document.getElementById('appointmentForm');
@@ -686,6 +686,56 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAppointmentModal);
 } else {
     initAppointmentModal();
+}
+
+function initBeforeVisitModal() {
+    const beforeVisitBtn = document.getElementById('beforeVisitBtn');
+    const beforeVisitModal = document.getElementById('beforeVisitModal');
+    const closeBeforeVisitModalBtn = document.getElementById('closeBeforeVisitModal');
+    const closeBeforeVisitBtn = document.getElementById('closeBeforeVisitBtn');
+    const modalOverlay = beforeVisitModal?.querySelector('.appointment-modal-overlay');
+
+    if (!beforeVisitBtn || !beforeVisitModal) return;
+
+    // Open modal
+    beforeVisitBtn.addEventListener('click', () => {
+        beforeVisitModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close modal function
+    const closeModal = () => {
+        beforeVisitModal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    // Close button
+    if (closeBeforeVisitModalBtn) {
+        closeBeforeVisitModalBtn.addEventListener('click', closeModal);
+    }
+
+    // Got It button
+    if (closeBeforeVisitBtn) {
+        closeBeforeVisitBtn.addEventListener('click', closeModal);
+    }
+
+    // Overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && beforeVisitModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBeforeVisitModal);
+} else {
+    initBeforeVisitModal();
 }
 
 console.log('Carrington Physio - Enhanced UI/UX loaded successfully! 🎉');
