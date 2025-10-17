@@ -1,3 +1,38 @@
+// Early mobile dropdown fix - run immediately
+(function() {
+    function setupMobileDropdownEarly() {
+        const dropdownToggles = document.querySelectorAll('.nav-item.dropdown .dropdown-toggle');
+
+        dropdownToggles.forEach(toggle => {
+            if (window.innerWidth < 992) {
+                toggle.removeAttribute('data-bs-toggle');
+            }
+
+            // Use capture phase to intercept before Bootstrap
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+
+                    const dropdown = this.closest('.nav-item.dropdown');
+                    const menu = dropdown.querySelector('.dropdown-menu');
+
+                    dropdown.classList.toggle('show');
+                    if (menu) menu.classList.toggle('show');
+
+                    return false;
+                }
+            }, true); // Use capture phase
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupMobileDropdownEarly);
+    } else {
+        setupMobileDropdownEarly();
+    }
+})();
 
 document.addEventListener('DOMContentLoaded', function() {
     AOS.init({
@@ -8,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         delay: 100
     });
 
-    
+
     initCursorSpotlight();
     initMagneticButtons();
     init3DTiltCards();
@@ -573,6 +608,7 @@ backToTopStyle.textContent = `
         transform: scale(0);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
+        display: none;
     }
 
     .back-to-top.show {
@@ -736,6 +772,106 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initBeforeVisitModal);
 } else {
     initBeforeVisitModal();
+}
+
+// Mobile Menu Dropdown Fix
+function initMobileDropdown() {
+    const dropdownToggles = document.querySelectorAll('.nav-item.dropdown .dropdown-toggle');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    if (!dropdownToggles.length) return;
+
+    dropdownToggles.forEach(dropdownToggle => {
+        const dropdown = dropdownToggle.closest('.nav-item.dropdown');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+        // Remove Bootstrap's data attributes on mobile to prevent auto-behavior
+        if (window.innerWidth < 992) {
+            dropdownToggle.removeAttribute('data-bs-toggle');
+        }
+
+        // Handle click on dropdown toggle
+        dropdownToggle.addEventListener('click', function(e) {
+            if (window.innerWidth < 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                // Close all other dropdowns first
+                document.querySelectorAll('.nav-item.dropdown').forEach(otherDropdown => {
+                    if (otherDropdown !== dropdown) {
+                        otherDropdown.classList.remove('show');
+                        const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+                        if (otherMenu) {
+                            otherMenu.classList.remove('show');
+                        }
+                    }
+                });
+
+                // Toggle current dropdown
+                dropdown.classList.toggle('show');
+                if (dropdownMenu) {
+                    dropdownMenu.classList.toggle('show');
+                }
+
+                return false;
+            }
+        });
+
+        // Close dropdown when clicking dropdown items on mobile
+        if (dropdownMenu) {
+            const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth < 992) {
+                        // Close dropdown
+                        dropdown.classList.remove('show');
+                        dropdownMenu.classList.remove('show');
+
+                        // Close navbar after a short delay to allow navigation
+                        setTimeout(() => {
+                            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                    toggle: true
+                                });
+                            }
+                        }, 100);
+                    }
+                });
+            });
+        }
+    });
+
+    // Reset dropdown attributes when resizing
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            dropdownToggles.forEach(dropdownToggle => {
+                const dropdown = dropdownToggle.closest('.nav-item.dropdown');
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+
+                if (window.innerWidth >= 992) {
+                    // Desktop: re-enable Bootstrap dropdown
+                    dropdownToggle.setAttribute('data-bs-toggle', 'dropdown');
+                    dropdown.classList.remove('show');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                } else {
+                    // Mobile: disable Bootstrap dropdown
+                    dropdownToggle.removeAttribute('data-bs-toggle');
+                }
+            });
+        }, 100);
+    });
+}
+
+// Initialize mobile dropdown
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileDropdown);
+} else {
+    initMobileDropdown();
 }
 
 console.log('Carrington Physio - Enhanced UI/UX loaded successfully! 🎉');
