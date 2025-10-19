@@ -874,4 +874,4 @@ if (document.readyState === 'loading') {
     initMobileDropdown();
 }
 
-console.log('Carrington Physio - Enhanced UI/UX loaded successfully! 🎉');
+console.log('Sage Meadows Allied Health Clinic - Enhanced UI/UX loaded successfully! 🎉');

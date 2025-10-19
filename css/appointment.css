@@ -282,3 +282,147 @@
     }
 }
 
+/* Modal Responsive Styles */
+@media (max-width: 991px) {
+    .appointment-modal-content {
+        padding: 2rem;
+        max-width: 95%;
+        width: 95%;
+    }
+
+    .modal-header-custom {
+        margin-bottom: 2rem;
+    }
+
+    .modal-header-custom h2 {
+        font-size: 1.75rem;
+    }
+
+    .modal-icon-wrapper {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    .before-visit-content {
+        padding: 1.5rem !important;
+    }
+
+    .modal-actions {
+        padding: 1rem 1.5rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .appointment-modal-content {
+        padding: 1.5rem;
+        border-radius: 20px;
+        max-height: 95vh;
+    }
+
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.125rem;
+    }
+
+    .modal-header-custom {
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-header-custom h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-header-custom p {
+        font-size: 0.9rem;
+    }
+
+    .modal-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        border-radius: 18px;
+    }
+
+    .before-visit-content {
+        padding: 1rem !important;
+        max-height: 50vh !important;
+    }
+
+    .before-visit-content .info-section {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .before-visit-content h4 {
+        font-size: 1.125rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .before-visit-content p,
+    .before-visit-content ul li {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .before-visit-content .lead {
+        font-size: 1rem;
+        margin-bottom: 1.25rem !important;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        padding: 1rem !important;
+    }
+
+    .modal-actions .btn {
+        width: 100%;
+        padding: 0.875rem 1.5rem;
+    }
+
+    .appointment-form .row {
+        row-gap: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .appointment-modal-content {
+        padding: 1.25rem;
+        width: 98%;
+        max-width: 98%;
+    }
+
+    .modal-header-custom h2 {
+        font-size: 1.35rem;
+    }
+
+    .modal-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        border-radius: 14px;
+    }
+
+    .before-visit-content {
+        padding: 0.75rem !important;
+    }
+
+    .before-visit-content h4 {
+        font-size: 1rem;
+    }
+
+    .before-visit-content p,
+    .before-visit-content ul li {
+        font-size: 0.85rem;
+    }
+
+    .modal-actions {
+        padding: 0.75rem !important;
+    }
+}
+

@@ -6,7 +6,11 @@
       "Bash(do sed -i 's/Carrington, State 12345/Calgary, AB T3P 1N7/g; s/Carrington, Calgary/Calgary, AB T3P 1N7/g' \"$file\")",
       "Bash(for file in about.html team.html blog.html contact.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
       "Bash(do sed -i 's|<span class=\"\"brand-text\"\">Carrington <strong>Physio</strong></span>|<img src=\"\"images/logo.png\"\" alt=\"\"Sage Meadows Allied Health Physiotherapy\"\" class=\"\"logo-img\"\">|g' \"$file\")",
-      "Bash(do sed -i 's|images/logo\\.svg|images/logo.png|g' \"$file\")"
+      "Bash(do sed -i 's|images/logo\\.svg|images/logo.png|g' \"$file\")",
+      "Bash(for file in index.html about.html team.html blog.html contact.html chiropractic.html physiotherapy.html massage.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
+      "Bash(do sed -i 's|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>\\n                            <li><a class=\"\"dropdown-item\"\" href=\"\"orthotics.html\"\">Custom Orthotics</a></li>|' \"$file\")",
+      "Bash(done)",
+      "Bash(do sed -i 's|<option value=\"\"dietitian\"\">Dietitian</option>|<option value=\"\"dietitian\"\">Dietitian</option>\\n                                <option value=\"\"orthotics\"\">Custom Orthotics</option>|' \"$file\")"
     ],
     "deny": [],
     "ask": []
