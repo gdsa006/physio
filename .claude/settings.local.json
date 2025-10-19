@@ -10,7 +10,17 @@
       "Bash(for file in index.html about.html team.html blog.html contact.html chiropractic.html physiotherapy.html massage.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
       "Bash(do sed -i 's|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>\\n                            <li><a class=\"\"dropdown-item\"\" href=\"\"orthotics.html\"\">Custom Orthotics</a></li>|' \"$file\")",
       "Bash(done)",
-      "Bash(do sed -i 's|<option value=\"\"dietitian\"\">Dietitian</option>|<option value=\"\"dietitian\"\">Dietitian</option>\\n                                <option value=\"\"orthotics\"\">Custom Orthotics</option>|' \"$file\")"
+      "Bash(do sed -i 's|<option value=\"\"dietitian\"\">Dietitian</option>|<option value=\"\"dietitian\"\">Dietitian</option>\\n                                <option value=\"\"orthotics\"\">Custom Orthotics</option>|' \"$file\")",
+      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html)",
+      "Bash(do)",
+      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html services.html)",
+      "Bash(for file in about.html team.html)",
+      "Bash(for file in about.html team.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html)",
+      "Bash(for file in team.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html)",
+      "Bash(perl -i -pe 's/<ul class=\"\"footer-legal\"\">.*?<\\/ul>//gs' \"$file\")",
+      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html services.html team.html)",
+      "Bash(for file in services.html contact.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html)",
+      "Bash(python3 -c \"\nimport re\nwith open(''$file'', ''r'', encoding=''utf-8'') as f:\n    content = f.read()\ncontent = re.sub(r''<ul class=\"\"footer-legal\"\">.*?</ul>'', '''', content, flags=re.DOTALL)\nwith open(''$file'', ''w'', encoding=''utf-8'') as f:\n    f.write(content)\n\")"
     ],
     "deny": [],
     "ask": []
