@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Sage Meadows Physiotherapy & Massage</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -18,18 +17,15 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
             border: 1px solid #f0e4ed;
         }
-
         .map-section {
             background: var(--light-color);
         }
-
         .contact-hero {
             background: linear-gradient(135deg, #fdf4f8 0%, #fce8f3 50%, #fef5f9 100%);
             padding: 8rem 0 4rem;
             position: relative;
             overflow: hidden;
         }
-
         .contact-hero::before {
             content: '';
             position: absolute;
@@ -41,7 +37,6 @@
             border-radius: 50%;
             animation: float 20s ease-in-out infinite;
         }
-
         .contact-hero-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -49,14 +44,12 @@
             margin-bottom: 1rem;
             line-height: 1.1;
         }
-
         .contact-hero-desc {
             font-size: 1.25rem;
             color: var(--text-light);
             margin-bottom: 2rem;
             line-height: 1.8;
         }
-
         @keyframes float {
             0%, 100% {
                 transform: translate(0, 0) rotate(0deg);
@@ -68,7 +61,6 @@
                 transform: translate(-20px, 20px) rotate(240deg);
             }
         }
-
         @media (max-width: 991px) {
             .contact-hero {
                 padding: 6rem 0 3rem;
@@ -83,7 +75,6 @@
                 height: 400px;
             }
         }
-
         @media (max-width: 767px) {
             .contact-hero {
                 padding: 5rem 0 2rem;
@@ -101,7 +92,6 @@
     </style>
 </head>
 <body>
-
    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -109,7 +99,7 @@
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
-            </a>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
@@ -143,27 +133,21 @@
             </div>
         </div>
     </nav>
-
-    
     <section class="contact-hero">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center" data-aos="fade-up">
                     <h1 class="contact-hero-title">Get In <span class="text-gradient">Touch</span></h1>
-                    <p class="contact-hero-desc">We're here to help you on your journey to better health. Reach out to us today to schedule your appointment or ask any questions.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    
     <section class="contact-section py-5" id="contact">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-right">
                     <h2 class="section-title">Contact Information</h2>
                     <p class="mb-4">Ready to start your journey to better health? Contact us today to schedule your appointment.</p>
-
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
@@ -239,8 +223,6 @@
             </div>
         </div>
     </section>
-
-    
     <section class="map-section py-5">
         <div class="container">
             <div class="text-center mb-5" data-aos="fade-up">
@@ -254,8 +236,6 @@
             </div>
         </div>
     </section>
-
-
     <footer class="footer bg-dark text-white py-4">
         <div class="container">
             <div class="footer-bottom">
@@ -275,16 +255,12 @@
             </div>
         </div>
     </footer>
-
-
     <a href="https://sagemeadowsphysiotherapy.janeapp.com/" target="_blank" rel="noopener noreferrer" class="floating-appointment-btn" aria-label="Schedule Appointment">
         <span class="btn-icon">
             <i class="fas fa-calendar-check"></i>
         </span>
         <span class="btn-text">Book Now</span>
     </a>
-
-
     <div class="appointment-modal" id="appointmentModal">
         <div class="appointment-modal-overlay"></div>
         <div class="appointment-modal-content">
@@ -383,12 +359,9 @@
             </form>
         </div>
     </div>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
     <script>
     (function() {
         function fixMobileDropdown() {
@@ -405,9 +378,7 @@
         }
     })();
     </script>
-
     <script src="js/script.js"></script>
-
     <script>
         // Initialize AOS
         AOS.init({
@@ -415,15 +386,12 @@
             once: true,
             offset: 100
         });
-
         // Initialize Map
         var map = L.map('map').setView([51.1447, -114.0719], 13);
-
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-
         // Create custom pink marker icon using CSS
         var customIcon = L.divIcon({
             className: 'custom-marker',
@@ -455,10 +423,8 @@
             iconAnchor: [20, 40],
             popupAnchor: [0, -40]
         });
-
         // Add marker to map
         var marker = L.marker([51.1447, -114.0719], { icon: customIcon }).addTo(map);
-
         // Add popup to marker
         marker.bindPopup(`
             <div style="font-family: 'Inter', sans-serif; padding: 10px;">
