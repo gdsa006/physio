@@ -1,26 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(do sed -i 's/(555) 123-4567/403 906 1996/g' \"$file\")",
-      "Bash(do sed -i 's/123 Health Street/2971 136 Ave NW #240C/g' \"$file\")",
-      "Bash(do sed -i 's/Carrington, State 12345/Calgary, AB T3P 1N7/g; s/Carrington, Calgary/Calgary, AB T3P 1N7/g' \"$file\")",
-      "Bash(for file in about.html team.html blog.html contact.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
-      "Bash(do sed -i 's|<span class=\"\"brand-text\"\">Carrington <strong>Physio</strong></span>|<img src=\"\"images/logo.png\"\" alt=\"\"Sage Meadows Allied Health Physiotherapy\"\" class=\"\"logo-img\"\">|g' \"$file\")",
-      "Bash(do sed -i 's|images/logo\\.svg|images/logo.png|g' \"$file\")",
-      "Bash(for file in index.html about.html team.html blog.html contact.html chiropractic.html physiotherapy.html massage.html acupuncture.html osteopathy.html psychology.html dietitian.html)",
-      "Bash(do sed -i 's|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>|<li><a class=\"\"dropdown-item\"\" href=\"\"dietitian.html\"\">Dietitian</a></li>\\n                            <li><a class=\"\"dropdown-item\"\" href=\"\"orthotics.html\"\">Custom Orthotics</a></li>|' \"$file\")",
-      "Bash(done)",
-      "Bash(do sed -i 's|<option value=\"\"dietitian\"\">Dietitian</option>|<option value=\"\"dietitian\"\">Dietitian</option>\\n                                <option value=\"\"orthotics\"\">Custom Orthotics</option>|' \"$file\")",
-      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html)",
-      "Bash(do)",
-      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html services.html)",
-      "Bash(for file in about.html team.html)",
-      "Bash(for file in about.html team.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html)",
-      "Bash(for file in team.html services.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html)",
-      "Bash(perl -i -pe 's/<ul class=\"\"footer-legal\"\">.*?<\\/ul>//gs' \"$file\")",
-      "Bash(for file in physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html contact.html services.html team.html)",
-      "Bash(for file in services.html contact.html physiotherapy.html massage.html chiropractic.html acupuncture.html osteopathy.html psychology.html dietitian.html orthotics.html)",
-      "Bash(python3 -c \"\nimport re\nwith open(''$file'', ''r'', encoding=''utf-8'') as f:\n    content = f.read()\ncontent = re.sub(r''<ul class=\"\"footer-legal\"\">.*?</ul>'', '''', content, flags=re.DOTALL)\nwith open(''$file'', ''w'', encoding=''utf-8'') as f:\n    f.write(content)\n\")"
+      "Bash(for file in about.html acupuncture.html chiropractic.html contact.html dietitian.html massage.html orthotics.html osteopathy.html physiotherapy.html psychology.html team.html)",
+      "Bash(do sed -i 's/Monday - Friday: 8:00 AM - 6:00 PM<br>\\nSaturday: 9:00 AM - 2:00 PM<br>\\nSunday: Closed/Monday - Friday: 9:00 AM - 7:00 PM<br>\\nSaturday: 10:00 AM - 4:00 PM<br>\\nSunday: Closed/g' \"$file\")",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

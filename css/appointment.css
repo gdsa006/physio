@@ -187,7 +187,7 @@
     will-change: transform;
 }
 
-/* Floating Appointment Button */
+
 .floating-appointment-btn {
     position: fixed;
     bottom: 30px;
@@ -282,7 +282,7 @@
     }
 }
 
-/* Modal Responsive Styles */
+
 @media (max-width: 991px) {
     .appointment-modal-content {
         padding: 2rem;

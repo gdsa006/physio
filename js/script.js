@@ -1,4 +1,4 @@
-// Early mobile dropdown fix - run immediately
+
 (function() {
     function setupMobileDropdownEarly() {
         const dropdownToggles = document.querySelectorAll('.nav-item.dropdown .dropdown-toggle');
@@ -8,7 +8,7 @@
                 toggle.removeAttribute('data-bs-toggle');
             }
 
-            // Use capture phase to intercept before Bootstrap
+            
             toggle.addEventListener('click', function(e) {
                 if (window.innerWidth < 992) {
                     e.preventDefault();
@@ -23,7 +23,7 @@
 
                     return false;
                 }
-            }, true); // Use capture phase
+            }, true); 
         });
     }
 
@@ -733,34 +733,34 @@ function initBeforeVisitModal() {
 
     if (!beforeVisitBtn || !beforeVisitModal) return;
 
-    // Open modal
+    
     beforeVisitBtn.addEventListener('click', () => {
         beforeVisitModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
 
-    // Close modal function
+    
     const closeModal = () => {
         beforeVisitModal.classList.remove('active');
         document.body.style.overflow = '';
     };
 
-    // Close button
+    
     if (closeBeforeVisitModalBtn) {
         closeBeforeVisitModalBtn.addEventListener('click', closeModal);
     }
 
-    // Got It button
+    
     if (closeBeforeVisitBtn) {
         closeBeforeVisitBtn.addEventListener('click', closeModal);
     }
 
-    // Overlay click
+    
     if (modalOverlay) {
         modalOverlay.addEventListener('click', closeModal);
     }
 
-    // Escape key
+    
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && beforeVisitModal.classList.contains('active')) {
             closeModal();
@@ -774,7 +774,7 @@ if (document.readyState === 'loading') {
     initBeforeVisitModal();
 }
 
-// Mobile Menu Dropdown Fix
+
 function initMobileDropdown() {
     const dropdownToggles = document.querySelectorAll('.nav-item.dropdown .dropdown-toggle');
     const navbarCollapse = document.querySelector('.navbar-collapse');
@@ -785,19 +785,19 @@ function initMobileDropdown() {
         const dropdown = dropdownToggle.closest('.nav-item.dropdown');
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
 
-        // Remove Bootstrap's data attributes on mobile to prevent auto-behavior
+        
         if (window.innerWidth < 992) {
             dropdownToggle.removeAttribute('data-bs-toggle');
         }
 
-        // Handle click on dropdown toggle
+        
         dropdownToggle.addEventListener('click', function(e) {
             if (window.innerWidth < 992) {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
 
-                // Close all other dropdowns first
+                
                 document.querySelectorAll('.nav-item.dropdown').forEach(otherDropdown => {
                     if (otherDropdown !== dropdown) {
                         otherDropdown.classList.remove('show');
@@ -808,7 +808,7 @@ function initMobileDropdown() {
                     }
                 });
 
-                // Toggle current dropdown
+                
                 dropdown.classList.toggle('show');
                 if (dropdownMenu) {
                     dropdownMenu.classList.toggle('show');
@@ -818,17 +818,17 @@ function initMobileDropdown() {
             }
         });
 
-        // Close dropdown when clicking dropdown items on mobile
+        
         if (dropdownMenu) {
             const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item');
             dropdownItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     if (window.innerWidth < 992) {
-                        // Close dropdown
+                        
                         dropdown.classList.remove('show');
                         dropdownMenu.classList.remove('show');
 
-                        // Close navbar after a short delay to allow navigation
+                        
                         setTimeout(() => {
                             if (navbarCollapse && navbarCollapse.classList.contains('show')) {
                                 const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
@@ -842,7 +842,7 @@ function initMobileDropdown() {
         }
     });
 
-    // Reset dropdown attributes when resizing
+    
     let resizeTimer;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
@@ -852,14 +852,14 @@ function initMobileDropdown() {
                 const dropdownMenu = dropdown.querySelector('.dropdown-menu');
 
                 if (window.innerWidth >= 992) {
-                    // Desktop: re-enable Bootstrap dropdown
+                    
                     dropdownToggle.setAttribute('data-bs-toggle', 'dropdown');
                     dropdown.classList.remove('show');
                     if (dropdownMenu) {
                         dropdownMenu.classList.remove('show');
                     }
                 } else {
-                    // Mobile: disable Bootstrap dropdown
+                    
                     dropdownToggle.removeAttribute('data-bs-toggle');
                 }
             });
@@ -867,7 +867,7 @@ function initMobileDropdown() {
     });
 }
 
-// Initialize mobile dropdown
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMobileDropdown);
 } else {
